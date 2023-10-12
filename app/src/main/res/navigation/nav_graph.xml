@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tasksListFragment">
+
+    <fragment
+        android:id="@+id/tasksListFragment"
+        android:name="com.dullgames.todolist.ui.tasks.TasksListFragment"
+        android:label="Tasks"
+        tools:layout="@layout/tasks_list">
+        <action
+            android:id="@+id/action_tasksListFragment_to_addOrEditTaskFragment"
+            app:destination="@id/addOrEditTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addOrEditTaskFragment"
+        android:name="com.dullgames.todolist.ui.taskdetails.AddOrEditTaskFragment"
+        android:label="{title}"
+        tools:layout="@layout/task_details_layout" >
+        <argument
+            android:name="task"
+            app:argType="com.dullgames.todolist.data.Task"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/deleteCompletedTask"
+        android:name="com.dullgames.todolist.ui.tasks.DeleteCompletedTask"
+        android:label="DeleteCompletedTask" /><action android:id="@+id/action_global_deleteCompletedTask" app:destination="@id/deleteCompletedTask"/>
+</navigation>
